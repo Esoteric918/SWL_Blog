@@ -7,7 +7,7 @@ import {
   GoogleAuthProvider,
   signInWithRedirect
 } from "firebase/auth";
-import { auth } from "../firebase";
+import { auth } from "../.env/firebase";
 
 
 const UserContext = createContext();

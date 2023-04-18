@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { UserAuth } from "../context/authContext";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { ref as dbRef, push } from "firebase/database";
-import { database, storage } from "../firebase";
+import { database, storage } from "../.env/firebase";
 
 export default function CreatePost() {
     const [title, setTitle] = React.useState("");
