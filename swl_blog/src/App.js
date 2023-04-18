@@ -1,10 +1,11 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Login from "./components/Login";
-import BlogPost from "./components/BlogPost";
+import NewBlogPost from "./components/CreatePost";
 import Account from "./components/Account";
 import SignUp from "./components/SignUp";
 import { AuthContextProvider } from "./context/authContext";
+import ProtectedRoute from "./components/protectedRoute";
 
 function App() {
   return (
@@ -12,10 +13,12 @@ function App() {
       <h1 className="text-center text-3xl font-bold">SWL Blog Site</h1>
       <AuthContextProvider>
         <Routes>
-          <Route path="/Login" element={<Login />} />
-          <Route path="/blogPost" element={<BlogPost />} />
-          <Route path="/signUp" element={<SignUp />} />
-          <Route path="/account" element={<Account />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<SignUp />} />
+          <ProtectedRoute path="/account">
+            <Route path="/" element={<Account />} />
+            <Route path="/create-post" element={<NewBlogPost />} />
+          </ProtectedRoute>
         </Routes>
       </AuthContextProvider>
     </div>
