@@ -3,6 +3,7 @@ import { UserAuth } from '../context/authContext'
 import { useNavigate } from 'react-router-dom'
 
 
+
 const Account = () => {
   const { user, logout } = UserAuth()
   const navigate = useNavigate()
@@ -21,6 +22,7 @@ const Account = () => {
     <div className='max-w-[600px] mx-auto my-16 p-4'>
       <h1 className='text-2xl font-bold py-4'>Account</h1>
       <p>User Email: {user && user.email}</p>
+      {user && user.email === 'example@example.com' && navigate('/CreatePost')}
 
       <button
         onClick={handleLogout}
