@@ -6,7 +6,7 @@ import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { ref as dbRef, push } from "firebase/database";
 import { database, storage } from "../firebase";
 
-export default function NewBlogPost() {
+export default function CreatePost() {
     const [title, setTitle] = React.useState("");
     const [content, setContent] = React.useState("");
     const [image, setImage] = React.useState(null);
@@ -48,7 +48,10 @@ export default function NewBlogPost() {
         return (
             <div className="max-w-xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                 <h2 className="text-2xl font-medium text-gray-900">Write a new Post about SWL!</h2>
-                <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
+                <form 
+                    className="mt-8 space-y-6"
+                    onSubmit={handleSubmit}
+                    >
                     <div className="space-y-2">
                         <label htmlFor="title" className="font-medium text-gray-700 block">
                             Title
@@ -97,7 +100,7 @@ export default function NewBlogPost() {
                             type="submit"
                             className="w-full bg-blue-500 text-white rounded-md py-2"
                             onChange={(e) => setContent(e.target.value)}
-                            onClick={handleSubmit}
+                            
 
                         >
                             Publish Blog Post

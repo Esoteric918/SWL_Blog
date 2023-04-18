@@ -5,12 +5,12 @@ import {
   signOut,
   onAuthStateChanged,
   GoogleAuthProvider,
+  signInWithRedirect
 } from "firebase/auth";
 import { auth } from "../firebase";
 
 
 const UserContext = createContext();
-// const provider = new GoogleAuthProvider();
 
 export const AuthContextProvider = ({ children }) => {
     const  [user, setUser] = useState({});
@@ -18,7 +18,7 @@ export const AuthContextProvider = ({ children }) => {
   const createUser = (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password);
   };
-
+  // sign in with email and pw
   const login = (email, password) => {
     return signInWithEmailAndPassword(auth, email, password);
   };
@@ -27,9 +27,16 @@ export const AuthContextProvider = ({ children }) => {
     return signOut(auth);
   };
 
+  // Sign in using a redirect.
+  // const provider = new GoogleAuthProvider();
+  // Start a sign in process for an unauthenticated user.
+  // provider.addScope('profile');
+  // provider.addScope('email');
+  // await signInWithRedirect(auth, provider);
+
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      console.log("currentUser", currentUser);
+      // console.log("currentUser", currentUser);
       setUser(currentUser);
     })
     return () => {
