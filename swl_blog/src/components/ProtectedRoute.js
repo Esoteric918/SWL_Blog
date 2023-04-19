@@ -3,12 +3,12 @@ import { Navigate } from 'react-router-dom'
 import { UserAuth } from '../context/authContext'
 
 
-const ProtectedRoute = (children) => {
+const ProtectedRoute = (props) => {
   const { user } = UserAuth();
     if (!user) {
       return <Navigate to="/login" />
     }
-  return children;
+  return [props.children];
 
 }
 

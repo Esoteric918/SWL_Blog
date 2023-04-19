@@ -38,76 +38,80 @@ export default function CreatePost() {
         setImage(null);
         setImageUrl("");
         navigate("/CreatePost");
-
-        const handleImageChange = (event) => {
-            const file = event.target.files[0];
-            setImage(file);
-            setImageUrl(URL.createObjectURL(file));
-        };
-
-        return (
-            <div className="max-w-xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                <h2 className="text-2xl font-medium text-gray-900">Write a new Post about SWL!</h2>
-                <form 
-                    className="mt-8 space-y-6"
-                    onSubmit={handleSubmit}
-                    >
-                    <div className="space-y-2">
-                        <label htmlFor="title" className="font-medium text-gray-700 block">
-                            Title
-                        </label>
-                        <input
-                            type="text"
-                            name="title"
-                            id="title"
-                            required
-                            value={title}
-                            onChange={(e) => setTitle(e.target.value)}
-                            className="block w-full shadow-sm sm:text-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md"
-                        />
-                    </div>
-                    <div className="space-y-2">
-                        <label htmlFor="image" className="font-medium text-gray-700 block">
-                            Image
-                        </label>
-                        <div className="flex items-center">
-                            <input
-                                type="file"
-                                accept="image/*"
-                                name="image"
-                                id="image"
-                                required
-                                onChange={handleImageChange}
-                                className="hidden"
-                            />
-                            <label
-                                htmlFor="image"
-                                className="inline-block py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 cursor-pointer"
-                            >
-                                Select Image
-                            </label>
-                            {imageUrl && (
-                                <img
-                                    src={imageUrl}
-                                    alt="Selected file"
-                                    className="block w-16 h-16 rounded-full object-cover ml-2"
-                                />
-                            )}
-                        </div>
-                    </div>
-                    <div className="mt-4">
-                        <button
-                            type="submit"
-                            className="w-full bg-blue-500 text-white rounded-md py-2"
-                            onChange={(e) => setContent(e.target.value)}
-                            
-
-                        >
-                            Publish Blog Post
-                        </button>
-                    </div>
-                </form>
-            </div>
-        );
     };
+    const handleImageChange = (event) => {
+        const file = event.target.files[0];
+        setImage(file);
+        setImageUrl(URL.createObjectURL(file));
+    };
+
+
+    return (
+        <div className="max-w-xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+            <h2 className="text-2xl font-medium text-gray-900">Write a new Post about SWL!</h2>
+            <form
+                className="mt-8 space-y-6"
+                onSubmit={handleSubmit}
+            >
+                <div className="space-y-2">
+                    <label htmlFor="title" className="font-medium text-gray-700 block ">
+                        Title
+                    </label>
+                    <input
+                        type="text"
+                        name="title"
+                        id="title"
+                        required
+                        value={title}
+                        maxLength="50"
+                        onChange={(e) => setTitle(e.target.value)}
+                        className="block w-full shadow-lg sm:text-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md"
+                    />
+                </div>
+                <div className="space-y-2">
+                    <label htmlFor="image" className="font-medium text-gray-700 block">
+                        Image
+                    </label>
+                    <div className="flex items-center">
+                        <input
+                            type="file"
+                            accept="image/*"
+                            name="image"
+                            id="image"
+                            required
+                            onChange={handleImageChange}
+                            className="hidden"
+                        />
+                        <label
+                            htmlFor="image"
+                            className="inline-block py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 cursor-pointer"
+                        >
+                            Select Image
+                        </label>
+                        {imageUrl && (
+                            <img
+                                src={imageUrl}
+                                alt="Selected file"
+                                className="block w-16 h-16 rounded-full object-cover ml-2"
+                            />
+                        )}
+                    </div>
+                    <label htmlFor="content" className="block font-medium text-gray-700 mb-2">Content</label>
+                    <textarea id="content" name="content" className="w-full shadow-lg px-3 py-2 rounded-lg border-gray-300 focus:outline-none focus:border-blue-500 focus:shadow-outline-blue"></textarea>
+
+                </div>
+                <div className="mt-4">
+                    <button
+                        type="submit"
+                        className="w-full bg-blue-500 text-white rounded-md py-2"
+                        onChange={(e) => setContent(e.target.value)}
+
+
+                    >
+                        Publish Blog Post
+                    </button>
+                </div>
+            </form>
+        </div>
+    );
 };

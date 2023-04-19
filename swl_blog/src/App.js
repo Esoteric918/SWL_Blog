@@ -12,20 +12,22 @@ function App() {
   
     <div className="App">
       <h1 className="text-center text-3xl font-bold">SWL Blog Site</h1>
+      <>
       <AuthContextProvider>
       
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/account" element={<Account /> } />
-          <Route path="/create-post" element={
+          <Route path="/CreatePost" element={
             <ProtectedRoute>  
               <CreatePost />
             </ProtectedRoute>
           } />
-        </Routes>
       
+        </Routes>
       </AuthContextProvider>
+      </>
     </div>
     
   );
