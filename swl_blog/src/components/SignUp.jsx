@@ -7,6 +7,7 @@ const SignUp = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
+  const [displayName, setDisplayName] = useState('')
   const [error, setError] = useState('')
   const navigate = useNavigate()
 
@@ -46,6 +47,10 @@ const SignUp = () => {
         <div className='mt-4'>
           <label htmlFor="email" className='block text-gray-500'>Email</label>
           <input onChange={(e) => setEmail(e.target.value)} type="email" name='email' id='email' className='w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:border-blue-500' />
+        </div>
+        <div className='mt-4'>
+          <label htmlFor="email" className='block text-gray-500'>Email</label>
+          <input onChange={(e) => setDisplayName(e.target.value)} type="display name" name='name' id='name' className='w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:border-blue-500' />
         </div>
         <div className='mt-4'>
           <label htmlFor="password" className='block text-gray-500'>Password</label>

@@ -6,6 +6,7 @@ import Account from "./components/Account";
 import SignUp from "./components/SignUp";
 import { AuthContextProvider } from "./context/authContext";
 import ProtectedRoute from "./components/ProtectedRoute";
+import TheBlog from "./components/TheBlog";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
     <div className="App">
       <h1 className="text-center text-3xl font-bold">SWL Blog Site</h1>
       <>
+      <TheBlog />
       <AuthContextProvider>
       
         <Routes>

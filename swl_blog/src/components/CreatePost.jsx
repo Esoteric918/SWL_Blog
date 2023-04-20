@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { UserAuth } from "../context/authContext";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { ref as dbRef, push } from "firebase/database";
-import { database, storage } from "../.env/firebase";
+import { database, storage, auth } from "../.env/firebase";
 
 export default function CreatePost() {
     const [title, setTitle] = React.useState("");
@@ -13,7 +13,9 @@ export default function CreatePost() {
     const [imageUrl, setImageUrl] = React.useState("");
 
     const navigate = useNavigate();
-    const auth = React.useContext(UserAuth);
+    const { user, logout } = UserAuth()
+    console.log(user, "user is displayed here");
+
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -23,21 +25,22 @@ export default function CreatePost() {
         const url = await getDownloadURL(storageRef);
         // Create a new blog post in the Firebase Realtime Database
         const blogRef = push(dbRef(database, "blog_post"));
-        const blog = {
+        const blog_post = {
             title,
             content,
             imageUrl: url,
-            authorId: auth.currentUser.uid,
-            authorName: auth.currentUser.displayName,
+            authorId: user,
+            // authorName: auth.currentUser.displayName || '',
             timestamp: Date.now(),
         };
-        await blogRef.set(blog);
+        console.log(blog_post);
+        await blogRef.set(blog_post);
         // Reset the form
         setTitle("");
         setContent("");
         setImage(null);
         setImageUrl("");
-        navigate("/CreatePost");
+        navigate("/TheBlog");
     };
     const handleImageChange = (event) => {
         const file = event.target.files[0];
@@ -105,6 +108,7 @@ export default function CreatePost() {
                         type="submit"
                         className="w-full bg-blue-500 text-white rounded-md py-2"
                         onChange={(e) => setContent(e.target.value)}
+                        // onClick={navigate("/TheBlog")}
 
 
                     >

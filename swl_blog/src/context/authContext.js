@@ -22,10 +22,18 @@ export const AuthContextProvider = ({ children }) => {
   const login = (email, password) => {
     return signInWithEmailAndPassword(auth, email, password);
   };
-
+  // log out of account
   const logout = () => {
     return signOut(auth);
   };
+
+  //create a function creating user name when siging up for an account
+  const setDisplayName = (name) => {
+    return auth.currentUser.updateProfile({
+      displayName: name
+    })
+  }
+
 
   // Sign in using a redirect.
   // const provider = new GoogleAuthProvider();
@@ -36,7 +44,7 @@ export const AuthContextProvider = ({ children }) => {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      // console.log("currentUser", currentUser);
+      console.log("currentUser", currentUser);
       setUser(currentUser);
     })
     return () => {
@@ -44,7 +52,7 @@ export const AuthContextProvider = ({ children }) => {
     };
   }, [])
 
-  return <UserContext.Provider value={{ createUser, user, logout, login }}>{children}</UserContext.Provider>;
+  return <UserContext.Provider value={{ createUser, user, logout, login, setDisplayName }}>{children}</UserContext.Provider>;
 };
 
 export const UserAuth = () => {
