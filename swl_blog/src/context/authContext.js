@@ -4,8 +4,6 @@ import {
   signInWithEmailAndPassword,
   signOut,
   onAuthStateChanged,
-  GoogleAuthProvider,
-  signInWithRedirect
 } from "firebase/auth";
 import { auth } from "../.env/firebase";
 
@@ -14,6 +12,10 @@ const UserContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
     const  [user, setUser] = useState({});
+
+    // set a current user to the state 
+    // const currentUser = auth.currentUser;
+    // console.log("currentUser", currentUser);
 
   const createUser = (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password);
