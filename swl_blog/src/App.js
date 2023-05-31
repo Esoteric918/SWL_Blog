@@ -8,12 +8,12 @@ import { AuthContextProvider } from "./context/authContext";
 import ProtectedRoute from "./components/ProtectedRoute";
 import TheBlog from "./components/TheBlog";
 import Footer from "./components/Footer";
+import NavBar from "./components/NavBar";
 
 function App() {
   return (
     <>
-      <div className="App">
-        <h1 className="text-center text-3xl font-bold">SWL Blog Site</h1>
+      <NavBar />
         <>
           <TheBlog />
           <AuthContextProvider>
@@ -23,7 +23,7 @@ function App() {
               <Route path="/signup" element={<SignUp />} />
               <Route path="/account" element={<Account />} />
               <Route path="/blog" element={<TheBlog />} />
-              <Route path="/CreatePost" element={
+              <Route path="/createPost" element={
                 <ProtectedRoute>
                   <CreatePost />
                 </ProtectedRoute>
@@ -32,7 +32,6 @@ function App() {
             </Routes>
           </AuthContextProvider>
         </>
-      </div>
       <Footer />
     </>
 

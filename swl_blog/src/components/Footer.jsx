@@ -4,14 +4,14 @@ import React from "react";
 export default function Footer() {
   return (
     // <!-- footer -->
-    <div className="bg-offwhite mb-0">
+    <div className="bg-hero-img bg-gray-600 bg-no-repeat bg-contain bg-center mb-0 text-white">
       <div className="max-w-6xl mx-auto mt-48">
         <div className="p-4 sm:p-6">
           <div className="md:flex md:justify-between">
             <div className="mb-6 md:mb-0">
               <a href="homepage.html" className="flex items-center">
-                <img src="./puplic/assets" className="mr-3 h-8 rounded-full" width={35} height={35} alt=" Logo" />
-                <span className="self-center text-2xl font-semibold whitespace-nowrap text-gray-500">Sandwiches WITH
+                <img src="/assets/swl-logo.jpg" className="mr-3 h-8 rounded-full" width={35} height={35} alt=" Logo" />
+                <span className="self-center text-2xl font-semibold whitespace-nowrap">Sandwiches WITH
                   LOVE</span>
              </a>
             </div>
@@ -19,7 +19,7 @@ export default function Footer() {
               <div>
                 <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dar:text-white">Resources
                 </h2>
-                <ul className="text-gray-600 dar:text-gray-400">
+                <ul className="">
                   <li className="mb-4">
                     <a href="https://react.dev/" className="hover:underline">React</a>
                   </li>
@@ -31,7 +31,7 @@ export default function Footer() {
               <div>
                 <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dar:text-white">Site Design by
                 </h2>
-                <ul className="text-gray-600 dar:text-gray-400">
+                <ul className="">
                   <li className="mb-4">
                     <a href="https://github.com/esoteric918" className="hover:underline ">Github</a>
                   </li>
@@ -48,7 +48,7 @@ export default function Footer() {
           </div>
           <hr className="my-6 border-gray-200 sm:mx-auto dar:border-gray-700 lg:my-8" />
           <div className="sm:flex sm:items-center sm:justify-between">
-            <span className="text-sm text-gray-500 sm:text-center dar:text-gray-400">© 2022 <a
+            <span className="text-sm ">© 2022 <a
               href="https://flowbite.com" className="hover:underline">Sandwiches With Love</a> . All Rights
               Reserved Site Created by Tofer Sokolosky(esoteric918).
             </span>
