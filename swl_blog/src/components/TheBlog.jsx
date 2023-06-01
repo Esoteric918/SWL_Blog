@@ -50,7 +50,7 @@ const TheBlog = () => {
 
   return (
     <><div
-      className="grid grid-cols-1 justify-center mx-auto w-full h-auto max-w-7xl px-4 sm:px-6 lg:px-8 dark:bg-gradient-to-r from-red-400 to-blue-500 text-slate-300">
+      className="grid grid-cols-1 justify-center mx-auto w-full h-auto  px-4 sm:px-6 lg:px-8 dark:bg-gradient-to-r from-red-400 to-blue-500 text-slate-300">
       <div className="flex justify-between">
         <h2 className="text-2xl font-bold">
           {posts.find((post) => post.id === selectedPost)?.title}
@@ -64,18 +64,18 @@ const TheBlog = () => {
               <input
                 type="checkbox"
                 id="toggleMenu"
-                className="hidden md:hidden"
+                className="hidden"
                 checked={isMenuVisible}
                 onChange={toggleMenu} />
-              <label htmlFor="toggleMenu" className="md:hidden">
-                <FontAwesomeIcon icon={faBars} className="cursor-pointer" />
+              <label htmlFor="toggleMenu" className=" border-5 border-gray-600">
+                Blog Menu 
               </label>
               <ul
-                className={`${isMenuVisible ? "visible" : "invisible"} md:visible absolute top-12 right-0 w-56 bg-none shadow-lg rounded`}
+                className={`${isMenuVisible ? "visible" : "invisible"} absolute top-12 right-0 w-56 bg-slate-700 shadow-lg rounded`}
               >
                 {posts.length > 0 ? (
                   posts.map((post) => (
-                    <li key={post.id} className="hover:bg-gray-100">
+                    <li key={post.id} className="">
                       <button
                         className={`${post.id === selectedPost ? "bg-gray-100" : ""} w-full text-left px-4 py-2`}
                         onClick={() => handlePostSelect(post.id)}

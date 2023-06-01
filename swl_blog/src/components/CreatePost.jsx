@@ -3,9 +3,9 @@ import { useNavigate } from "react-router-dom";
 import { UserAuth } from "../context/authContext";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { getDatabase } from "firebase/database";
-import { storage, db } from "../.env/firebase";  
+import { storage, db } from "../.env/firebase";
 import { useState } from "react";
-import {ref as dbRef, push, set, onValue } from "firebase/database";
+import { ref as dbRef, push, set, onValue } from "firebase/database";
 
 
 
@@ -24,7 +24,7 @@ const CreateBlogPost = () => {
 
 
     const handleSubmit = async (event) => {
-        
+
         event.preventDefault();
         // Upload the image to Firebase Storage
         const storageRef = ref(storage, `blog_images/${image.name}`);
@@ -35,12 +35,12 @@ const CreateBlogPost = () => {
         const blogRef = push(dbRef(db, "blog_post"));
         const blogPostRef = dbRef(db, `blog_post/${blogRef.key}`);
         const blog = {
-          title,
-          content,
-          imageUrl: url,
-          authorId: user.uid,
-          authorName: user.displayName,
-          timestamp: Date.now(),
+            title,
+            content,
+            imageUrl: url,
+            authorId: user.uid,
+            authorName: user.displayName,
+            timestamp: Date.now(),
         };
         await set(blogPostRef, blog);
         // Reset the form
@@ -49,7 +49,7 @@ const CreateBlogPost = () => {
         setImage(null);
         setImageUrl("");
     };
-    
+
     const handleImageChange = (event) => {
         const file = event.target.files[0];
         if (file) {
@@ -59,7 +59,7 @@ const CreateBlogPost = () => {
             setImage(null);
             setImageUrl("");
         }
-    // navigate("/blog");
+        // navigate("/blog");
     };
 
     return (
@@ -128,22 +128,17 @@ const CreateBlogPost = () => {
                         value={content}
                         onChange={(e) => setContent(e.target.value)}
                     ></textarea>
-       <div className="mt-4">
-            <button
-                type="submit"
-                className="w-full bg-blue-500 text-white rounded-md py-2"
-                onChange={(e) => setContent(e.target.value)}
-            // onClick={navigate("/TheBlog")}
-
-
-            >
-                Publish Blog Post
-            </button>
+                    <div className="mt-4">
+                        <button
+                            type="submit"
+                            className="w-full bg-blue-500 text-white rounded-md py-2"
+                            onChange={(e) => setContent(e.target.value)}
+                        >
+                            Publish Blog Post
+                        </button>
+                    </div>
                 </div>
-
-        </div>
             </form >
- 
         </div>
     );
 };
